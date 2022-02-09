@@ -23,5 +23,23 @@ namespace RentOfEquipment.Windows
         {
             InitializeComponent();
         }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+            var authUser = ClassHelper.AppData.Context.Employee.ToList().
+                Where(i => i.Login == txtLogin.Text && i.Password == txtPassword.Text).
+                FirstOrDefault();
+
+            if (authUser != null)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
+        }
     }
 }

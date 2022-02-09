@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="EquipmentListWindow" Height="450" Width="800">
+        Title="Оборудование" Height="600" Width="1000">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список оборудования"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   FontFamily="Century Gothic"/>
+
+        <ListView x:Name="lvEquipment"
+                  Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Код" Width="70" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Название" Width="220" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Цена" Width="160" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Тип оборудования" Width="160" DisplayMemberBinding="{Binding TypeEquipment.Name}"/>
+                    <GridViewColumn Header="Статус аренды" Width="150" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Срок годности (в годах)" Width="200" DisplayMemberBinding="{Binding ProductLive}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

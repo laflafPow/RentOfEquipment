@@ -5,47 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment"
         mc:Ignorable="d"
-        Title="Меню" Height="450" Width="800">
+        Title="Меню" Height="600" Width="1000">
     <Grid>
         <StackPanel>
             <TextBlock
-                Text="Здравствуйте, Никита!"
+                Text="Меню"
                 FontSize="20"
                 HorizontalAlignment="Center"
                 Margin="0 15 0 0"/>
 
             <WrapPanel>
-                <Border
+                <Button x:Name="btnEmployeesList"
                     Width="150"
                     Height="150"
-                    Margin="225 30 0 0" Background="#FFF59999"
-                    />
-
-                <Image
-                    Source=""/>
-
-                <Border
-                    Width="150"
-                    Height="150"
-                    Margin="30 30 0 0"
+                    Margin="330 50 0 0" 
                     Background="#FFF59999"
-                    />
+                    Content="Сотрудники" 
+                    FontSize="14" 
+                    FontFamily="Century Gothic" 
+                        Click="btnEmployeeList_Click"               
+                />
+
+                <Button x:Name="btnClientList"
+                    Width="150"
+                    Height="150"
+                    Margin="30 50 0 0"
+                    Background="#FFF59999"
+                    Content="Клиенты"
+                    FontSize="14" 
+                    FontFamily="Century Gothic" 
+                    Click="btnClientList_Click"
+                />
             </WrapPanel>
 
             <WrapPanel>
-                <Border
+                <Button x:Name="btnEquipmentList"
                     Width="150"
                     Height="150"
-                    Margin="225 30 0 0" 
+                    Margin="330 50 0 0" 
                     Background="#FFF59999"
-                    />
+                    Content="Оборудование"
+                    FontSize="14" 
+                    FontFamily="Century Gothic" 
+                    Click="btnEquipmentList_Click"   
+                />
 
-                <Border
+                <Button
+                    Content="Что-то"
+                    FontSize="14" 
+                    FontFamily="Century Gothic" 
                     Width="150"
                     Height="150"
-                    Margin="30 30 0 0"
+                    Margin="30 50 0 0"
                     Background="#FFF59999"
-                    />
+                />
             </WrapPanel>
 
         </StackPanel>

@@ -22,6 +22,7 @@ namespace RentOfEquipment.Windows
         public ClientListWindow()
         {
             InitializeComponent();
+            lvClient.ItemsSource = ClassHelper.AppData.Context.Client.ToList();
         }
     }
 }

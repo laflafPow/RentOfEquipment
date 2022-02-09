@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace RentOfEquipment.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для EquipmentListWindow.xaml
+    /// Логика взаимодействия для EmployeeListWindow.xaml
     /// </summary>
-    public partial class EquipmentListWindow : Window
+    public partial class EmployeeListWindow : Window
     {
-        public EquipmentListWindow()
+        public EmployeeListWindow()
         {
             InitializeComponent();
-            lvEquipment.ItemsSource = ClassHelper.AppData.Context.Equipment.ToList();
+            lvEmployee.ItemsSource = ClassHelper.AppData.Context.Employee.ToList();
         }
     }
 }
