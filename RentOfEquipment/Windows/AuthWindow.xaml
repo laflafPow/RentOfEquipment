@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="Авторизация" Height="450" Width="300">
+        Title="Авторизация" Height="450" Width="300"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <TextBlock

@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace RentOfEquipment.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для EmployeeListWindow.xaml
+    /// Логика взаимодействия для EmployeeListAdd.xaml
     /// </summary>
-    public partial class EmployeeListWindow : Window
+    public partial class EmployeeListAdd : Window
     {
-        public EmployeeListWindow()
+        public EmployeeListAdd()
         {
             InitializeComponent();
-            lvEmployee.ItemsSource = ClassHelper.AppData.Context.Employee.ToList();
-        }
-
-        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            EmployeeListAdd employeeListAdd = new EmployeeListAdd();
-            employeeListAdd.ShowDialog();
         }
     }
 }
