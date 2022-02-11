@@ -19,10 +19,34 @@ namespace RentOfEquipment.Windows
     /// </summary>
     public partial class EmployeeListWindow : Window
     {
+        List<string> listSort = new List<string>()
+        {
+            "По умолчанию",
+            "По фамилии",
+            "По имени",
+            "По электронной почте",
+            "По должности",
+        };
+
         public EmployeeListWindow()
         {
             InitializeComponent();
-            lvEmployee.ItemsSource = ClassHelper.AppData.Context.Employee.ToList();
+            Filter();
+            cbSort.ItemsSource = listSort;
+            cbSort.SelectedIndex = 0;
+        }
+
+        private void Filter()
+        {
+            List<EF.Employee> listEmployee = new List<EF.Employee>();
+
+            listEmployee = ClassHelper.AppData.Context.Employee.ToList();
+
+            listEmployee = listEmployee.Where(i => i.LastName.ToLower().Contains(txtSearch.Text.ToLower()) 
+            || i.LastName.ToLower().Contains(txtSearch.Text.ToLower())).
+                ToList();
+
+            lvEmployee.ItemsSource = listEmployee;
         }
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)

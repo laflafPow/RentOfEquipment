@@ -77,6 +77,29 @@
                    VerticalAlignment="Center"
                    FontSize="20"
                    FontFamily="Century Gothic"/>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" Margin="80 0">
+            
+            <TextBlock                  
+                   HorizontalAlignment="Left"                 
+                   Text="Поиск:"
+                   FontSize="16"
+                   FontFamily="Century Gothic"
+            />
+
+            <TextBox
+                x:Name="txtSearch"
+                Width="200"
+                VerticalContentAlignment="Center"
+                Margin="10 0 0 0 "
+                FontSize="16"/>
+
+            <ComboBox
+                x:Name="cbSort"
+                Width="200"
+                VerticalContentAlignment="Center"
+                Margin="10 0 0 0 "
+                FontSize="16"/>
+        </WrapPanel>
 
         <ListView x:Name="lvEmployee"
                   Grid.Row="2">
