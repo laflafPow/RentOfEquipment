@@ -22,7 +22,8 @@
                    FontFamily="Century Gothic"/>
 
         <ListView x:Name="lvEquipment"
-                  Grid.Row="2">
+                  Grid.Row="2"
+                  KeyDown="lvEquipment_KeyDown">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Код" Width="70" DisplayMemberBinding="{Binding Id}"/>
@@ -34,5 +35,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
     </Grid>
 </Window>

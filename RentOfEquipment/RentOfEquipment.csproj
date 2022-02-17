@@ -100,6 +100,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\EquipmentSaleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,6 +181,9 @@
     </Compile>
     <Compile Include="Windows\EquipmentReceptionWindow.xaml.cs">
       <DependentUpon>EquipmentReceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EquipmentSaleList.xaml.cs">
+      <DependentUpon>EquipmentSaleList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

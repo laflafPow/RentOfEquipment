@@ -24,5 +24,27 @@ namespace RentOfEquipment.Windows
             InitializeComponent();
             lvEquipment.ItemsSource = ClassHelper.AppData.Context.Equipment.ToList();
         }
+
+        private void lvEquipment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                var resClick = MessageBox.Show("Удалить пользователя?", "Подтверждение", MessageBoxButton.YesNo);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+
+                if (lvEquipment.SelectedItem is EF.Equipment)
+                {
+                    var equip = lvEquipment.SelectedItem as EF.Equipment;
+                    ClassHelper.AppData.Context.Equipment.Remove(equip);
+                    ClassHelper.AppData.Context.SaveChanges();
+                    MessageBox.Show("Успешно удалено", "Готово", MessageBoxButton.OK);
+                    
+                }
+            }
+        }
     }
 }

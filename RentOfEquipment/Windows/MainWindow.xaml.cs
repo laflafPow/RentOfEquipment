@@ -50,5 +50,13 @@ namespace RentOfEquipment
             equipmentListWindow.ShowDialog();
             this.Show();
         }
+
+        private void btnEquipmentSaleList_Click(object sender, RoutedEventArgs e)
+        {
+            EquipmentSaleList equipmentSaleList = new EquipmentSaleList();
+            this.Hide();
+            equipmentSaleList.ShowDialog();
+            this.Show();
+        }
     }
 }

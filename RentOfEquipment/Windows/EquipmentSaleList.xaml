@@ -1,0 +1,38 @@
+﻿<Window x:Class="RentOfEquipment.Windows.EquipmentSaleList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentOfEquipment.Windows"
+        mc:Ignorable="d"
+        Title="Заказы" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Список заказов"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   FontFamily="Century Gothic"/>
+
+        <ListView x:Name="lvEquipmentSale"
+                  Grid.Row="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID записи" Width="125" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Оборудование" Width="170" DisplayMemberBinding="{Binding Equipment.Name}"/>
+                    <GridViewColumn Header="ФИО Клиента" Width="130" DisplayMemberBinding="{Binding IdClient}"/>
+                    <GridViewColumn Header="Дата начала аренды" Width="190" DisplayMemberBinding="{Binding StartRentDate}"/>
+                    <GridViewColumn Header="Дата конца аренды" Width="190" DisplayMemberBinding="{Binding EndRentDate}"/>
+                    <GridViewColumn Header="Количество" Width="140" DisplayMemberBinding="{Binding Qty}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
