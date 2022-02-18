@@ -1,4 +1,5 @@
-﻿using RentOfEquipment.EF;
+﻿using RentOfEquipment.ClassHelper;
+using RentOfEquipment.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,9 @@ namespace RentOfEquipment.Windows
 
         private void btnEmployeeAdd_Click(object sender, RoutedEventArgs e)
         {
+            var user = AppData.Context.Employee.ToList().
+                Where(i => i.Login == txtLogin.Text).FirstOrDefault();
+
             if (String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 MessageBox.Show("Пустые значения в поле Фамилия", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -55,6 +59,12 @@ namespace RentOfEquipment.Windows
             if (String.IsNullOrWhiteSpace(txtLogin.Text))
             {
                 MessageBox.Show("Пустые значения в поле логин", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (user != null)
+            {
+                MessageBox.Show("Логин занят!", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

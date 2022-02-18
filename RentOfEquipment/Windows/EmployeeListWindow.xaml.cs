@@ -54,5 +54,10 @@ namespace RentOfEquipment.Windows
             EmployeeListAdd employeeListAdd = new EmployeeListAdd();
             employeeListAdd.ShowDialog();
         }
+
+        private void lvEmployee_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
