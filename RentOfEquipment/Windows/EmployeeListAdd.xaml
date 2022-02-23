@@ -26,7 +26,7 @@
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock
+        <TextBlock x:Name="tbTitle"
             Grid.ColumnSpan="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"

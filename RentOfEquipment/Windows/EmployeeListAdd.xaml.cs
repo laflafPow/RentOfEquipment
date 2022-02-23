@@ -21,6 +21,9 @@ namespace RentOfEquipment.Windows
     /// </summary>
     public partial class EmployeeListAdd : Window
     {
+        bool isEdit = false;
+        EF.Employee editEmployee = new EF.Employee();
+
         public EmployeeListAdd()
         {
             InitializeComponent();
@@ -28,10 +31,36 @@ namespace RentOfEquipment.Windows
             cbRole.DisplayMemberPath = "Name";
             cbRole.SelectedIndex = 0;
 
-
+            isEdit = false;
         }
 
-        
+        public EmployeeListAdd(EF.Employee employee)
+        {
+            InitializeComponent();
+            cbRole.ItemsSource = ClassHelper.AppData.Context.Role.ToList();
+            cbRole.DisplayMemberPath = "Name";
+
+            txtLastName.Text = employee.LastName;
+            txtFirstName.Text = employee.FirstName;
+            txtMiddleName.Text = employee.MiddleName;
+            txtPhone.Text = employee.Phone;
+            txtEmail.Text = employee.Email;
+
+            // ?*@?*.?*
+            txtLogin.Text = employee.Login;
+            txtPassword.Password = employee.Password;
+
+            cbRole.SelectedIndex = employee.IdRole - 1;
+
+
+            tbTitle.Text = "Изменение данных работника";
+            btnEmployeeAdd.Content = "Сохранить";
+
+            isEdit = true;
+
+            editEmployee = employee;
+        }
+
 
         private void btnEmployeeAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -74,26 +103,83 @@ namespace RentOfEquipment.Windows
                 return;
             }
 
-
-
-            try
+            if (!Int32.TryParse(txtPhone.Text, out int res))
             {
-                EF.Employee newEmployee = new EF.Employee();
-                newEmployee.LastName = txtLastName.Text;
-                newEmployee.FirstName = txtFirstName.Text;
-                newEmployee.MiddleName = txtMiddleName.Text;
-                newEmployee.Phone = txtPhone.Text;
-                newEmployee.Login = txtLogin.Text;
-                newEmployee.Password = txtPassword.Password;
-                newEmployee.IdRole = (cbRole.SelectedItem as EF.Role).Id;
-                ClassHelper.AppData.Context.Employee.Add(newEmployee);
-                
+                MessageBox.Show("Недопустимые символы", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-            catch (Exception exp)
+            if (isEdit)
             {
-                MessageBox.Show(exp.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                var resClick = MessageBox.Show("Изменить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+
+                try
+                {
+                    editEmployee.LastName = txtLastName.Text;
+                    editEmployee.FirstName = txtFirstName.Text;
+                    editEmployee.MiddleName = txtMiddleName.Text;
+                    editEmployee.Phone = txtPhone.Text;
+                    editEmployee.Email = txtEmail.Text;
+
+                    // ?*@?*.?*
+
+                    editEmployee.IdRole = (cbRole.SelectedItem as EF.Role).Id;
+                    editEmployee.Login = txtLogin.Text;
+                    editEmployee.Password = txtPassword.Password;
+
+                    ClassHelper.AppData.Context.SaveChanges();
+
+                    MessageBox.Show("Пользователь изменен");
+                    this.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+
+            else
+            {
+                var resClick = MessageBox.Show("Добавить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (resClick == MessageBoxResult.No)
+                {
+                    return;
+                }
+
+                try
+                {
+                    EF.Employee newEmployee = new EF.Employee();
+
+                    newEmployee.LastName = txtLastName.Text;
+                    newEmployee.FirstName = txtFirstName.Text;
+                    newEmployee.MiddleName = txtMiddleName.Text;
+                    newEmployee.Phone = txtPhone.Text;
+                    newEmployee.Email = txtEmail.Text;
+                    newEmployee.IdRole = (cbRole.SelectedItem as EF.Role).Id;
+                    newEmployee.Login = txtLogin.Text;
+                    newEmployee.Password = txtPassword.Password;
+
+                    ClassHelper.AppData.Context.Employee.Add(newEmployee);
+                    ClassHelper.AppData.Context.SaveChanges();
+
+                    MessageBox.Show("Пользователь добавлен");
+
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
+
         }
+
     }
 }

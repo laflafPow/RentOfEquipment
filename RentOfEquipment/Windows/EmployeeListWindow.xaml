@@ -91,18 +91,21 @@
                 Width="200"
                 VerticalContentAlignment="Center"
                 Margin="10 0 0 0 "
-                FontSize="16"/>
+                FontSize="16"
+                TextChanged="txtSearch_TextChanged"/>
 
             <ComboBox
                 x:Name="cbSort"
                 Width="200"
                 VerticalContentAlignment="Center"
                 Margin="10 0 0 0 "
-                FontSize="16"/>
+                FontSize="16"
+                SelectionChanged="cbSort_SelectionChanged"/>
         </WrapPanel>
 
         <ListView x:Name="lvEmployee"
                   Grid.Row="2"
+                  KeyDown="lvEmployee_KeyDown"
                   MouseDoubleClick="lvEmployee_MouseDoubleClick">
             <ListView.View>
                 <GridView>
