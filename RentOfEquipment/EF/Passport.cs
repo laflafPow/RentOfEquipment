@@ -18,6 +18,7 @@ namespace RentOfEquipment.EF
         public string PassportSeries { get; set; }
         public string PassportNumber { get; set; }
         public int IdClient { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
     }

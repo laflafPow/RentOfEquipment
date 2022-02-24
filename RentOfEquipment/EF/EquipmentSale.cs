@@ -21,6 +21,7 @@ namespace RentOfEquipment.EF
         public System.DateTime StartRentDate { get; set; }
         public System.DateTime EndRentDate { get; set; }
         public int Qty { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Employee Employee { get; set; }

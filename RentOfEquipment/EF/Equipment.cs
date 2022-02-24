@@ -27,6 +27,7 @@ namespace RentOfEquipment.EF
         public string PhotoPath { get; set; }
         public bool Status { get; set; }
         public byte ProductLive { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual TypeEquipment TypeEquipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

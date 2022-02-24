@@ -48,7 +48,7 @@ namespace RentOfEquipment.Windows
                 || i.MiddleName.ToLower().Contains(txtSearch.Text.ToLower())
                 || i.FIO.ToLower().Contains(txtSearch.Text.ToLower())
                 || i.Phone.ToLower().Contains(txtSearch.Text.ToLower())
-                || i.Email.ToLower().Contains(txtSearch.Text.ToLower())).
+                || i.Email.ToLower().Contains(txtSearch.Text.ToLower())||(i.IsDeleted != false)).
                 ToList();
 
             switch (cbSort.SelectedIndex)
@@ -114,8 +114,8 @@ namespace RentOfEquipment.Windows
                     if (lvEmployee.SelectedItem is EF.Employee)
                     {
                         var empl = lvEmployee.SelectedItem as EF.Employee;
-                        ClassHelper.AppData.Context.Employee.Remove(empl);
-                        ClassHelper.AppData.Context.SaveChanges();
+                        empl.IsDeleted = true;
+                         ClassHelper.AppData.Context.SaveChanges();
                         MessageBox.Show("Пользователь успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                         Filter();
                     }
