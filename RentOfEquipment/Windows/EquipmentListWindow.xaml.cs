@@ -29,7 +29,7 @@ namespace RentOfEquipment.Windows
         {
             if (e.Key == Key.Delete || e.Key == Key.Back)
             {
-                var resClick = MessageBox.Show("Удалить пользователя?", "Подтверждение", MessageBoxButton.YesNo);
+                var resClick = MessageBox.Show("Удалить выбранное оборудование?", "Подтверждение", MessageBoxButton.YesNo);
 
                 if (resClick == MessageBoxResult.No)
                 {

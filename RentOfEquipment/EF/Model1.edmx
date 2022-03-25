@@ -18,6 +18,7 @@
           <Property Name="IdGender" Type="int" Nullable="false" />
           <Property Name="Birthdate" Type="date" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -33,6 +34,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Equipment">
           <Key>
@@ -46,6 +48,7 @@
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="ProductLive" Type="tinyint" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="EquipmentSale">
           <Key>
@@ -352,6 +355,7 @@
           <Property Name="IdGender" Type="Int32" Nullable="false" />
           <Property Name="Birthdate" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Gender" Relationship="RentOfEquipmentModel.FK_Client_Gender1" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="EquipmentSale" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Client1" FromRole="Client" ToRole="EquipmentSale" />
           <NavigationProperty Name="Passport" Relationship="RentOfEquipmentModel.FK_Passport_Client" FromRole="Client" ToRole="Passport" />
@@ -370,6 +374,7 @@
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Role" Relationship="RentOfEquipmentModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="EquipmentSale" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Employee" FromRole="Employee" ToRole="EquipmentSale" />
         </EntityType>
@@ -385,6 +390,7 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="ProductLive" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TypeEquipment" Relationship="RentOfEquipmentModel.FK_Equipment_TypeEquipment1" FromRole="Equipment" ToRole="TypeEquipment" />
           <NavigationProperty Name="EquipmentSale" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Equipment" FromRole="Equipment" ToRole="EquipmentSale" />
         </EntityType>
@@ -566,6 +572,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
@@ -581,6 +588,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -597,6 +605,7 @@
           <EntitySetMapping Name="Equipment">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ProductLive" ColumnName="ProductLive" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
