@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
         Title="Сотрудники" Height="600" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="#FFD5D5D5">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -106,13 +107,14 @@
         <ListView x:Name="lvEmployee"
                   Grid.Row="2"
                   KeyDown="lvEmployee_KeyDown"
-                  MouseDoubleClick="lvEmployee_MouseDoubleClick">
+                  MouseDoubleClick="lvEmployee_MouseDoubleClick"
+                  >
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="#FFCBEEFF"
-                Width="700"
-                Height="100"
+                    <Border Background="White"
+                Width="200"
+                Height="250"
                 BorderThickness="1"
                 BorderBrush="{x:Null}"
                 CornerRadius="10">
@@ -121,74 +123,123 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.8*"/>
                             </Grid.RowDefinitions>
 
-                            <Image x:Name="photoEmpl"
-                                    Margin="10"
-                                    Grid.RowSpan="3">
+                            <Image x:Name="photoEmpl"                       
+                       Margin="10"
+                       Grid.ColumnSpan="3"
+                       Width="100"
+                       Height="100"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
                                 <Image.Source>
                                     <Binding Path="Photo">
                                         <Binding.TargetNullValue>
-                                            <ImageSource>/Res/user.png</ImageSource>
+                                            <ImageSource>/Res/employee.png</ImageSource>
                                         </Binding.TargetNullValue>
                                     </Binding>
                                 </Image.Source>
                             </Image>
 
-                            <TextBlock Text="Фамилия"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="10 0"
-                           Grid.Column="1"
-                           Grid.Row="0"/>
+                            <Button Grid.ColumnSpan="2" 
+                        Grid.Column="1" 
+                        Margin="53.778,99,54.222,32.111" 
+                        Height="Auto" Background="#FFF9FF74" 
+                        BorderBrush="{x:Null}"
+                        Style="{DynamicResource ButtonStyle1}">
+                                <Image Source="/Res/pngegg.png" Height="13" 
+                           Width="15" 
+                           RenderTransformOrigin="0.53,0.826"/>
+                            </Button>
 
-                            <TextBlock Text="Имя"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="10 0"
-                           Grid.Column="1"
-                           Grid.Row="1"/>
+                            <Grid Grid.ColumnSpan="3"
+                        Grid.RowSpan="2"
+                        Grid.Row="1">
 
-                            <TextBlock Text="Отчество"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Right"
-                           Margin="10 0"
-                           Grid.Column="1"
-                           Grid.Row="2"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                            <TextBlock Text="{Binding LastName}"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="10 0"
-                           Grid.Column="2"
-                           Grid.Row="0"/>
+                                <Border
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="3"
+                        Grid.Row="0"
+                        Background="#FFFFFEF0"
+                        CornerRadius="10">
+                                </Border>
 
-                            <TextBlock Text="{Binding FirstName}"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="10 0"
-                           Grid.Column="2"
-                           Grid.Row="1"/>
+                                <TextBlock 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Фамилия: "        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
 
-                            <TextBlock Text="{Binding MiddleName}"
-                           FontSize="18"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="10 0"
-                           Grid.Column="2"
-                           Grid.Row="2"/>
+                                <TextBlock 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Имя: "        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
+
+                                <TextBlock 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Должность: "        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding LastName}"       
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="5 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding FirstName}"
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="40 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Role.Name}"        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="15 0 0 0"/>
+                            </Grid>
                         </Grid>
                     </Border>
                 </DataTemplate>
