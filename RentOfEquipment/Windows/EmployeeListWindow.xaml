@@ -110,6 +110,12 @@
                   MouseDoubleClick="lvEmployee_MouseDoubleClick"
                   >
 
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="White"

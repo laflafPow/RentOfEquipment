@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="EmployeeListAdd" Height="450" Width="800"
+        Title="EmployeeListAdd" Height="650" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,6 +15,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -217,7 +221,38 @@
             MaxLength="50"
         />
 
-        <Button Grid.Row="9"
+        <Border Background="LightGray"
+                Grid.Row="9"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="3"
+                Width="100"
+                Height="100"
+                Margin="5"
+                CornerRadius="50">
+            <Image x:Name="photoUser" 
+                   Source="/RentOfEquipment;component/Res/employee.png"
+                   Width="100"
+                   Height="100"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"/>
+        </Border>
+
+        <Button x:Name="btnChoosePhoto"
+                Grid.Row="12" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Width="150"
+                Height="30"
+                Content="Выбрать фото"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="10 0"
+                FontSize="12"
+                VerticalContentAlignment="Center"
+                BorderThickness="0"
+                Click="btnChoosePhoto_Click" Foreground="#FF59636C" Background="{x:Null}" BorderBrush="Black"/>
+
+        <Button Grid.Row="13"
                 x:Name="btnEmployeeAdd"
                 Grid.ColumnSpan="2"
                 Width="150"
