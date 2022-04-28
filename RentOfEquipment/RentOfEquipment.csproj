@@ -75,6 +75,7 @@
     <Compile Include="Test\PatternUser.xaml.cs">
       <DependentUpon>PatternUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserMethodsClass.cs" />
     <Compile Include="Windows\RentWindow.xaml.cs">
       <DependentUpon>RentWindow.xaml</DependentUpon>
     </Compile>
