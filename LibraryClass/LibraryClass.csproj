@@ -41,16 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassHelper\Equipment.cs" />
     <Compile Include="RentMethodsClass.cs" />
     <Compile Include="EquipmentMethodsClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserMethodsClass.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RentOfEquipment\RentOfEquipment.csproj">
-      <Project>{b23047ee-300e-4a23-94fc-61d168907a53}</Project>
-      <Name>RentOfEquipment</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
