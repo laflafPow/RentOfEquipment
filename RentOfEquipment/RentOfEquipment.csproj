@@ -75,12 +75,8 @@
     <Compile Include="Test\PatternUser.xaml.cs">
       <DependentUpon>PatternUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserMethodsClass.cs" />
     <Compile Include="Windows\RentWindow.xaml.cs">
       <DependentUpon>RentWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="Test\PatternUser.xaml">
       <SubType>Designer</SubType>
@@ -103,18 +99,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EquipmentListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EquipmentExtraditionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EquipmentReceptionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\EquipmentSaleList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,24 +175,11 @@
     <Compile Include="Windows\EquipmentListWindow.xaml.cs">
       <DependentUpon>EquipmentListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\EquipmentExtraditionWindow.xaml.cs">
-      <DependentUpon>EquipmentExtraditionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\EquipmentReceptionWindow.xaml.cs">
-      <DependentUpon>EquipmentReceptionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\EquipmentSaleList.xaml.cs">
-      <DependentUpon>EquipmentSaleList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\RentWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,9 +218,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Res\Clients.png" />
   </ItemGroup>
@@ -268,7 +237,6 @@
     <Resource Include="Res\employee.png" />
     <Resource Include="Res\user.png" />
     <Resource Include="Res\di.jpg" />
-    <Resource Include="Images\ImageEmployee.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

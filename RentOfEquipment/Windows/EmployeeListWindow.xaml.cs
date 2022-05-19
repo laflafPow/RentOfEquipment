@@ -139,6 +139,10 @@ namespace RentOfEquipment.Windows
 
             }
         }
-        
+
+        private void btnChangeUser_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

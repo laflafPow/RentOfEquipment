@@ -8,14 +8,14 @@ namespace LibraryClass
 {
     public class EquipmentMethodsClass
     {
-        public static double PercentageOfWear(RentOfEquipment.EF.Equipment equipment, DateTime StartRentDate)
-        {
-            double percentage;
-            int age = DateTime.Now.Date - StartRentDate;
+        //public static double PercentageOfWear(RentOfEquipment.EF.Equipment equipment, DateTime StartRentDate)
+        //{
+        //    double percentage;
+        //    int age = DateTime.Now.Date - StartRentDate;
 
-            percentage = equipment.;
+        //    percentage = equipment.;
 
-            return percentage;
-        }
+        //    return percentage;
+        //}
     }
 }

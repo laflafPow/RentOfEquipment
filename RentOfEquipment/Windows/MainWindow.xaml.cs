@@ -16,9 +16,6 @@ using RentOfEquipment.Windows;
 
 namespace RentOfEquipment
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -51,11 +48,11 @@ namespace RentOfEquipment
             this.Show();
         }
 
-        private void btnEquipmentSaleList_Click(object sender, RoutedEventArgs e)
+        private void btnRent_Click(object sender, RoutedEventArgs e)
         {
-            EquipmentSaleList equipmentSaleList = new EquipmentSaleList();
+            RentWindow rentWindow = new RentWindow();
             this.Hide();
-            equipmentSaleList.ShowDialog();
+            rentWindow.ShowDialog();
             this.Show();
         }
     }

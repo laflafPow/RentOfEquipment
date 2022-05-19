@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Сотрудники" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen"
-        Background="#FFD5D5D5">
+        Background="#FFF4F4F4">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -152,15 +152,21 @@
                                 </Image.Source>
                             </Image>
 
-                            <Button Grid.ColumnSpan="2" 
-                        Grid.Column="1" 
-                        Margin="53.778,99,54.222,32.111" 
-                        Height="Auto" Background="#FFF9FF74" 
-                        BorderBrush="{x:Null}"
-                        Style="{DynamicResource ButtonStyle1}">
-                                <Image Source="/Res/pngegg.png" Height="13" 
-                           Width="15" 
-                           RenderTransformOrigin="0.53,0.826"/>
+                            <Button 
+                                    x:Name="btnChangeUser"
+                                    Grid.ColumnSpan="2" 
+                                    Grid.Column="1" 
+                                    Margin="53.778,99,54.222,32.111" 
+                                    Height="Auto" 
+                                    Background="#FFF9FF74" 
+                                    BorderBrush="{x:Null}"
+                                    Style="{DynamicResource ButtonStyle1}"
+                                    Click="btnChangeUser_Click">
+                                    
+                                    <Image  Source="/Res/pngegg.png" 
+                                            Height="13" 
+                                            Width="15" 
+                                            RenderTransformOrigin="0.53,0.826"/>
                             </Button>
 
                             <Grid Grid.ColumnSpan="3"

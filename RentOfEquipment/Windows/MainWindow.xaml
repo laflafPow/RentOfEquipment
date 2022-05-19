@@ -51,14 +51,14 @@
                     Click="btnEquipmentList_Click"   
                 />
 
-                <Button x:Name="btnEquipmentSaleList"
-                    Content="Заказы"
+                <Button x:Name="btnRent"
+                    Content="Аренда"
                     FontSize="14" 
                     FontFamily="Century Gothic" 
                     Width="150"
                     Height="150"
                     Margin="30 50 0 0"
-                    Background="#FFF59999" Click="btnEquipmentSaleList_Click"
+                    Background="#FFF59999" Click="btnRent_Click"
                 />
             </WrapPanel>
 

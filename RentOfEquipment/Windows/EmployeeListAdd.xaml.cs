@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net.Mail;
 
 namespace RentOfEquipment.Windows
 {
@@ -35,6 +36,20 @@ namespace RentOfEquipment.Windows
             cbRole.SelectedIndex = 0;
 
             isEdit = false;
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         public EmployeeListAdd(EF.Employee employee)
@@ -108,10 +123,21 @@ namespace RentOfEquipment.Windows
                 return;
             }
 
-            if (user != null)
+            if (isEdit == false)
             {
-                MessageBox.Show("Логин занят!", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                if (user != null)
+                {
+                    MessageBox.Show("Логин занят!", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            else
+            {
+                if (user.Login != editEmployee.Login)
+                {
+                    MessageBox.Show("Логин занят!", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
 
             if (String.IsNullOrWhiteSpace(txtPassword.Password))
@@ -122,7 +148,13 @@ namespace RentOfEquipment.Windows
 
             if (!Int32.TryParse(txtPhone.Text, out int res))
             {
-                MessageBox.Show("Недопустимые символы", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("В поле телефон возможны только цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if(IsValidEmail(txtEmail.Text) == false)
+            {
+                MessageBox.Show("E-mail не соответсвует маске (?*@?*.?*)", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
