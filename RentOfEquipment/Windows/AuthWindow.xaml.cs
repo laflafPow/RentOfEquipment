@@ -41,5 +41,41 @@ namespace RentOfEquipment.Windows
                 MessageBox.Show("Пользователь не найден");
             }
         }
+
+        private void txtLogin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtLogin.Text == "Логин")
+            {
+                txtLogin.Foreground = Brushes.Black;
+                txtLogin.Text = null;
+            }
+        }
+
+        private void txtLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtLogin.Text == "")
+            {
+                txtLogin.Foreground = Brushes.LightGray;
+                txtLogin.Text = "Логин";
+            }
+        }
+
+        private void txtPassword_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPassword.Text == "Пароль")
+            {
+                txtPassword.Foreground = Brushes.Black;
+                txtPassword.Text = null;
+            }
+        }
+
+        private void txtPassword_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPassword.Text == "")
+            {
+                txtPassword.Foreground = Brushes.LightGray;
+                txtPassword.Text = "Пароль";
+            }
+        }
     }
 }

@@ -78,6 +78,9 @@
     <Compile Include="Windows\RentWindow.xaml.cs">
       <DependentUpon>RentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\RentWindowList.xaml.cs">
+      <DependentUpon>RentWindowList.xaml</DependentUpon>
+    </Compile>
     <Page Include="Test\PatternUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +183,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Windows\RentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RentWindowList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

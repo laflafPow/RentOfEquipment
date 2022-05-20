@@ -47,6 +47,7 @@
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="ProductLive" Type="tinyint" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="EquipmentSale">
           <Key>
@@ -60,6 +61,7 @@
           <Property Name="EndRentDate" Type="datetime" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="TotalCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -387,6 +389,7 @@
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="ProductLive" Type="Byte" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="TypeEquipment" Relationship="RentOfEquipmentModel.FK_Equipment_TypeEquipment1" FromRole="Equipment" ToRole="TypeEquipment" />
           <NavigationProperty Name="EquipmentSale" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Equipment" FromRole="Equipment" ToRole="EquipmentSale" />
         </EntityType>
@@ -402,6 +405,7 @@
           <Property Name="EndRentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <NavigationProperty Name="Client" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Client1" FromRole="EquipmentSale" ToRole="Client" />
           <NavigationProperty Name="Employee" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Employee" FromRole="EquipmentSale" ToRole="Employee" />
           <NavigationProperty Name="Equipment" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Equipment" FromRole="EquipmentSale" ToRole="Equipment" />
@@ -600,6 +604,7 @@
           <EntitySetMapping Name="Equipment">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.Equipment">
               <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ProductLive" ColumnName="ProductLive" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -614,6 +619,7 @@
           <EntitySetMapping Name="EquipmentSale">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.EquipmentSale">
               <MappingFragment StoreEntitySet="EquipmentSale">
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="EndRentDate" ColumnName="EndRentDate" />

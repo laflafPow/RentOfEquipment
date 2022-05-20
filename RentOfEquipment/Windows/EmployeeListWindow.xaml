@@ -268,10 +268,10 @@
                 Content="+"
                 FontSize="30"
                 FontFamily="Century Gothic" Style="{DynamicResource ButtonStyle1}"
-                Background="Coral"
-                Foreground="GreenYellow"
+                Background="Black"
+                Foreground="White"
                 BorderThickness="0"
-                Click="btnAddEmployee_Click"
+                Click="btnAddEmployee_Click" BorderBrush="{x:Null}"
                 />
     </Grid>
 </Window>

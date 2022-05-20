@@ -5,8 +5,271 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="RentWindow" Height="450" Width="800">
+        Title="Аренда" Height="750" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="0">
+            
+            <TextBlock   
+                Text="Арендатор:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbClient"
+                Text="Василий Иванович Клюков"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <Button
+            x:Name="btnSelectUser"
+            Grid.Row="0"
+            Grid.Column="1"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            FontWeight="Bold"
+            Content="Выбрать арендатора"
+            Height="50"
+            Width="250"
+            VerticalContentAlignment="Center"
+        />
+
         
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="1">
+
+            <TextBlock   
+                Text="Сотрудник:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbEmployee"
+                Text="Андрей Витальевич Тощий"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <Button
+            x:Name="btnSelectEmployee"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            FontWeight="Bold"
+            Content="Выбрать сотрудника"
+            Height="50"
+            Width="250"
+        />
+
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="2">
+
+            <TextBlock   
+                Text="Оборудование:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbEquipment"
+                Text="Кувалда"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <Button
+            x:Name="btnSelectEquipment"
+            Grid.Row="2"
+            Grid.Column="1"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            FontWeight="Bold"
+            Content="Выбрать оборудование"
+            Height="50"
+            Width="250"
+        />
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="3">
+
+            <TextBlock   
+                Text="Кол-во на складе:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbQty"
+                Text="48"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Grid.Row="3"
+            Grid.Column="1">
+
+            <TextBlock   
+                Text="Количество:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+            />
+
+            <TextBox
+                x:Name="txtQty"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+                Height="30"
+                Width="180"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+            />
+        </WrapPanel>
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="4"
+            Grid.Column="0">
+
+            <TextBlock   
+                Text="Дата начала аренды:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbDateStart"
+                Text="20.05.2022"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <DatePicker
+            x:Name="dpStartRent"
+            Grid.Column="1"
+            Grid.Row="4"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            VerticalContentAlignment="Center"
+            Width="250"
+            Height="50"/>
+
+        <WrapPanel 
+            Margin="20"
+            VerticalAlignment="Center"
+            Grid.Row="5"
+            Grid.Column="0">
+
+            <TextBlock   
+                Text="Дата окончания аренды:"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                FontWeight="Bold"
+            />
+
+            <TextBlock  
+                x:Name="tbEndRent"
+                Text="24.05.2022"
+                FontFamily="Century Gothic"
+                FontSize="16"
+                Margin="10 0 0 0"
+            />
+        </WrapPanel>
+
+        <DatePicker
+            x:Name="dpEndRent"
+            Grid.Column="1"
+            Grid.Row="5"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            VerticalContentAlignment="Center"
+            Width="250"
+            Height="50"/>
+
+        <WrapPanel
+            VerticalAlignment="Center"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center">
+
+            <TextBlock
+                Text="Итоговая стоимость:"
+                FontFamily="Century Gothic"
+                FontSize="24"
+                FontWeight="Bold"/>
+
+            <TextBlock
+                x:Name="tbTotalCost"
+                Text="124$ "
+                FontFamily="Century Gothic"
+                FontSize="24"
+                Margin="10 0 0 0"/>
+        </WrapPanel>
+
+        <Button
+            x:Name="btnAdd"
+            Grid.Row="7"
+            Grid.ColumnSpan="2"
+            Content="Добавить"
+            FontFamily="Century Gothic"
+            FontSize="16"
+            FontWeight="Bold"
+            Height="50"
+            Width="250"/>
     </Grid>
 </Window>

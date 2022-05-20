@@ -7,49 +7,134 @@
         mc:Ignorable="d"
         Title="Авторизация" Height="450" Width="300"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <TextBlock
                 Text="Авторизация"
-                HorizontalAlignment="Center"
+                FontFamily="Century Gothic"
                 FontSize="20"
-                Margin="0 60 0 0"/>
+                HorizontalAlignment="Center"
+                Margin="0 60 0 0"
+            />
 
             <TextBlock
                 Text="Введите логин"
-                HorizontalAlignment="Left"
+                FontFamily="Century Gothic"
                 FontSize="14"
-                Margin="30 50 0 0"/>
-
-            <TextBox x:Name="txtLogin"
                 HorizontalAlignment="Left"
+                Margin="30 50 0 0"
+            />
+
+            <TextBox 
+                x:Name="txtLogin"
+                Text="Логин"
+                FontStyle="Italic"
+                Foreground="LightGray"
+                FontFamily="Century Gothic"
                 FontSize="14"
                 Margin="30 10 0 0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
                 Width="240"
                 Height="25"
-                VerticalContentAlignment="Center"/>
+                GotFocus="txtLogin_GotFocus"
+                LostFocus="txtLogin_LostFocus"
+            />
 
             <TextBlock
                 Text="Введите пароль"
-                HorizontalAlignment="Left"
+                FontFamily="Century Gothic"                               
                 FontSize="14"
-                Margin="30 10 0 0"/>
+                HorizontalAlignment="Left"
+                Margin="30 10 0 0"
+            />
 
             <TextBox x:Name="txtPassword"
+                Text="Пароль"
+                FontStyle="Italic"
+                Foreground="LightGray"
                 HorizontalAlignment="Left"
                 FontSize="14"
                 Margin="30 10 0 0"
                 Width="240"
                 Height="25"
-                VerticalContentAlignment="Center"/>
+                VerticalContentAlignment="Center"
+                GotFocus="txtPassword_GotFocus"
+                LostFocus="txtPassword_LostFocus"/>
 
-            <Button x:Name="btnAuth"
+            <Button 
+                x:Name="btnAuth"
                 Content="Войти"
+                FontFamily="Century Gothic"
                 FontSize="14"
                 HorizontalAlignment="Center"
                 Margin="0 60 0 0"
                 Width="150"
-                Height="35" Click="btnAuth_Click"/>
+                Height="35" 
+                Click="btnAuth_Click" 
+                Background="Black" 
+                BorderBrush="{x:Null}" 
+                Foreground="White"
+                >
+               
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
