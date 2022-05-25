@@ -46,6 +46,7 @@ namespace RentOfEquipment.Windows
         {
             if (txtLogin.Text == "Логин")
             {
+                txtLogin.FontStyle = FontStyles.Normal;
                 txtLogin.Foreground = Brushes.Black;
                 txtLogin.Text = null;
             }
@@ -55,6 +56,7 @@ namespace RentOfEquipment.Windows
         {
             if (txtLogin.Text == "")
             {
+                txtLogin.FontStyle = FontStyles.Italic;
                 txtLogin.Foreground = Brushes.LightGray;
                 txtLogin.Text = "Логин";
             }
@@ -64,6 +66,7 @@ namespace RentOfEquipment.Windows
         {
             if (txtPassword.Text == "Пароль")
             {
+                txtPassword.FontStyle = FontStyles.Normal;
                 txtPassword.Foreground = Brushes.Black;
                 txtPassword.Text = null;
             }
@@ -73,6 +76,7 @@ namespace RentOfEquipment.Windows
         {
             if (txtPassword.Text == "")
             {
+                txtPassword.FontStyle = FontStyles.Italic;
                 txtPassword.Foreground = Brushes.LightGray;
                 txtPassword.Text = "Пароль";
             }

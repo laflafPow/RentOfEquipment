@@ -19,9 +19,6 @@ using System.Net.Mail;
 
 namespace RentOfEquipment.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для EmployeeListAdd.xaml
-    /// </summary>
     public partial class EmployeeListAdd : Window
     {
         bool isEdit = false;
@@ -152,10 +149,13 @@ namespace RentOfEquipment.Windows
                 return;
             }
 
-            if(IsValidEmail(txtEmail.Text) == false)
+            if(txtEmail.Text != "")
             {
-                MessageBox.Show("E-mail не соответсвует маске (?*@?*.?*)", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                if (IsValidEmail(txtEmail.Text) == false)
+                {
+                    MessageBox.Show("E-mail не соответсвует маске (?*@?*.?*)", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }              
             }
 
             if (isEdit)
@@ -222,7 +222,7 @@ namespace RentOfEquipment.Windows
 
                     if (pathPhoto != null)
                     {
-                        editEmployee.Photo = File.ReadAllBytes(pathPhoto);
+                        newEmployee.Photo = File.ReadAllBytes(pathPhoto);
                     }
 
                     ClassHelper.AppData.Context.Employee.Add(newEmployee);
@@ -243,6 +243,7 @@ namespace RentOfEquipment.Windows
         private void btnChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "Files|*.jpg;*.jpeg;*.png;";
             if (openFile.ShowDialog() == true)
             {
                 photoUser.Source = new BitmapImage(new Uri(openFile.FileName));

@@ -104,11 +104,15 @@
                 SelectionChanged="cbSort_SelectionChanged"/>
         </WrapPanel>
 
-        <ListView x:Name="lvEmployee"
-                  Grid.Row="2"
-                  KeyDown="lvEmployee_KeyDown"
-                  MouseDoubleClick="lvEmployee_MouseDoubleClick"
-                  >
+        <ListView 
+            x:Name="lvEmployee"                 
+            Grid.Row="2"                 
+            KeyDown="lvEmployee_KeyDown"                  
+            MouseDoubleClick="lvEmployee_MouseDoubleClick"                  
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            VerticalContentAlignment="Center"
+            Margin="60 0 60 0">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -123,7 +127,8 @@
                 Height="250"
                 BorderThickness="1"
                 BorderBrush="{x:Null}"
-                CornerRadius="10">
+                CornerRadius="10"
+                >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -259,19 +264,21 @@
             
         </ListView>
         
-        <Button x:Name="btnAddEmployee"
+        <Button 
+            x:Name="btnAddEmployee"
             Grid.Row="3"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Width="40"
-                Height="40"
-                Content="+"
-                FontSize="30"
-                FontFamily="Century Gothic" Style="{DynamicResource ButtonStyle1}"
-                Background="Black"
-                Foreground="White"
-                BorderThickness="0"
-                Click="btnAddEmployee_Click" BorderBrush="{x:Null}"
-                />
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="40"
+            Height="40"
+            Content="+"
+            FontSize="30"
+            FontFamily="Century Gothic" 
+            Style="{DynamicResource ButtonStyle1}"
+            Background="Black"
+            Foreground="White"
+            BorderThickness="0"
+            Click="btnAddEmployee_Click" BorderBrush="{x:Null}"
+        />
     </Grid>
 </Window>

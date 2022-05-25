@@ -102,7 +102,7 @@ namespace RentOfEquipment.Windows
         {
             if (e.Key == Key.Delete || e.Key == Key.Back)
             {
-                var resClick = MessageBox.Show("Удалить оборудование?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var resClick = MessageBox.Show("Удалить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (resClick == MessageBoxResult.No)
                 {

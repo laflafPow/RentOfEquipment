@@ -12,30 +12,32 @@
             <TextBlock
                 Text="Меню"
                 FontSize="20"
+                FontFamily="Century Gothic"
+                FontWeight="Bold"
                 HorizontalAlignment="Center"
-                Margin="0 15 0 0"/>
+                Margin="0 40 0 0"/>
 
             <WrapPanel>
                 <Button x:Name="btnEmployeesList"
                     Width="150"
                     Height="150"
                     Margin="330 50 0 0" 
-                    Background="#FFF59999"
+                    Background="Black"
                     Content="Сотрудники" 
                     FontSize="14" 
                     FontFamily="Century Gothic" 
-                        Click="btnEmployeeList_Click"               
+                        Click="btnEmployeeList_Click" BorderBrush="{x:Null}"               
                 />
 
                 <Button x:Name="btnClientList"
                     Width="150"
                     Height="150"
                     Margin="30 50 0 0"
-                    Background="#FFF59999"
+                    Background="Black"
                     Content="Клиенты"
                     FontSize="14" 
                     FontFamily="Century Gothic" 
-                    Click="btnClientList_Click"
+                    Click="btnClientList_Click" BorderBrush="{x:Null}"
                 />
             </WrapPanel>
 
@@ -44,11 +46,11 @@
                     Width="150"
                     Height="150"
                     Margin="330 50 0 0" 
-                    Background="#FFF59999"
+                    Background="Black"
                     Content="Оборудование"
                     FontSize="14" 
                     FontFamily="Century Gothic" 
-                    Click="btnEquipmentList_Click"   
+                    Click="btnEquipmentList_Click" BorderBrush="{x:Null}"   
                 />
 
                 <Button x:Name="btnRent"
@@ -58,7 +60,7 @@
                     Width="150"
                     Height="150"
                     Margin="30 50 0 0"
-                    Background="#FFF59999" Click="btnRent_Click"
+                    Background="Black" Click="btnRent_Click" BorderBrush="{x:Null}"
                 />
             </WrapPanel>
 

@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\IMac7\Source\Repos\laflafPow\RentOfEquipment\RentOfEquipment\EF\Model1.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Никита поел\Source\Repos\laflafPow\RentOfEquipment\RentOfEquipment\EF\Model1.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
