@@ -30,6 +30,7 @@ namespace RentOfEquipment.EF
         public int IdGender { get; set; }
         public Nullable<System.DateTime> Birthdate { get; set; }
         public bool IsDeleted { get; set; }
+        public byte[] Photo { get; set; }
     
         public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -18,6 +18,7 @@
           <Property Name="IdGender" Type="int" Nullable="false" />
           <Property Name="Birthdate" Type="date" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -355,6 +356,7 @@
           <Property Name="IdGender" Type="Int32" Nullable="false" />
           <Property Name="Birthdate" Type="DateTime" Precision="0" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Gender" Relationship="RentOfEquipmentModel.FK_Client_Gender1" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="EquipmentSale" Relationship="RentOfEquipmentModel.FK_EquipmentSale_Client1" FromRole="Client" ToRole="EquipmentSale" />
           <NavigationProperty Name="Passport" Relationship="RentOfEquipmentModel.FK_Passport_Client" FromRole="Client" ToRole="Passport" />
@@ -572,6 +574,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="RentOfEquipmentModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
