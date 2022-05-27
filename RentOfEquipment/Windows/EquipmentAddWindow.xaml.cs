@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RentOfEquipment.ClassHelper;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -13,21 +13,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using RentOfEquipment.ClassHelper;
 
 namespace RentOfEquipment.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для ClientAddWindow.xaml
+    /// Логика взаимодействия для EquipmentAddWindow.xaml
     /// </summary>
-    public partial class ClientAddWindow : Window
+    public partial class EquipmentAddWindow : Window
     {
         bool isEdit = false;
-        EF.Client editClient = new EF.Client();
+        EF.Equipment editEquipment = new EF.Equipment();
         string pathPhoto = null;
 
-        public ClientAddWindow()
+        public EquipmentAddWindow()
         {
             InitializeComponent();
             cbGender.ItemsSource = AppData.Context.Gender.ToList();
@@ -51,18 +49,18 @@ namespace RentOfEquipment.Windows
             }
         }
 
-        public ClientAddWindow(EF.Client client)
+        public EquipmentAddWindow(EF.Equipment equipment)
         {
             InitializeComponent();
             cbGender.ItemsSource = ClassHelper.AppData.Context.Gender.ToList();
             cbGender.DisplayMemberPath = "Name";
 
-            txtLastName.Text = client.LastName;
-            txtFirstName.Text = client.FirstName;
-            txtMiddleName.Text = client.MiddleName;
-            txtPhone.Text = client.Phone;
-            txtEmail.Text = client.Email;
-            dpBirthdate.SelectedDate = client.Birthdate;
+            txtLastName.Text = equipment.Name;
+            txtFirstName.Text = equipment.FirstName;
+            txtMiddleName.Text = equipment.MiddleName;
+            txtPhone.Text = equipment.Phone;
+            txtEmail.Text = equipment.Email;
+            dpBirthdate.SelectedDate = equipment.Birthdate;
 
             // ?*@?*.?*
 

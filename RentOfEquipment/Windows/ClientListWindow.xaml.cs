@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace RentOfEquipment.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для ClientListWindow.xaml
-    /// </summary>
     public partial class ClientListWindow : Window
     {
         List<string> listSort = new List<string>()
@@ -82,7 +79,7 @@ namespace RentOfEquipment.Windows
             lvClient.ItemsSource = listClient;
         }
 
-        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
             ClientAddWindow clientAddWindow = new ClientAddWindow();
             clientAddWindow.ShowDialog();

@@ -6,7 +6,67 @@
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
         Title="Оборудование" Height="600" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="#FFF4F4F4">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -15,26 +75,218 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Список оборудования"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="20"
-                   FontFamily="Century Gothic"/>
+        <TextBlock 
+            Text="Список оборудования"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"   
+            FontSize="20"                   
+            FontFamily="Century Gothic"
+        />
 
-        <ListView x:Name="lvEquipment"
-                  Grid.Row="2"
-                  KeyDown="lvEquipment_KeyDown">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Код" Width="70" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Название" Width="220" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Цена" Width="160" DisplayMemberBinding="{Binding Price}"/>
-                    <GridViewColumn Header="Тип оборудования" Width="160" DisplayMemberBinding="{Binding TypeEquipment.Name}"/>
-                    <GridViewColumn Header="Статус аренды" Width="150" DisplayMemberBinding="{Binding Status}"/>
-                    <GridViewColumn Header="Срок годности (в годах)" Width="200" DisplayMemberBinding="{Binding ProductLive}"/>
-                </GridView>
-            </ListView.View>
+        <WrapPanel 
+            Grid.Row="1" 
+            VerticalAlignment="Center" 
+            Margin="80 0">
+
+            <TextBlock                  
+                HorizontalAlignment="Left"                 
+                Text="Поиск:"
+                FontSize="16"                   
+                FontFamily="Century Gothic"
+            />
+
+            <TextBox
+                x:Name="txtSearch"
+                Width="200"
+                VerticalContentAlignment="Center"
+                Margin="10 0 0 0 "
+                FontSize="16"
+                TextChanged="txtSearch_TextChanged"/>
+
+            <ComboBox
+                x:Name="cbSort"
+                Width="200"
+                VerticalContentAlignment="Center"
+                Margin="10 0 0 0 "
+                FontSize="16"
+                SelectionChanged="cbSort_SelectionChanged"/>
+        </WrapPanel>
+
+        <ListView 
+            x:Name="lvEquipment"                 
+            Grid.Row="2"                 
+            KeyDown="lvEquipment_KeyDown"                  
+            MouseDoubleClick="lvEquipment_MouseDoubleClick"                  
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            VerticalContentAlignment="Center"
+            Margin="60 0 60 0">
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="White"
+                Width="200"
+                Height="250"
+                BorderThickness="1"
+                BorderBrush="{x:Null}"
+                CornerRadius="10"
+                >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="0.8*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image x:Name="photoEquipment"                       
+                       Margin="10"
+                       Grid.ColumnSpan="3"
+                       Width="100"
+                       Height="100"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                                <Image.Source>
+                                    <Binding Path="Photo">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Res/eqipmentIcon.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+
+                            <Button 
+                                    x:Name="btnChangeUser"
+                                    Grid.ColumnSpan="2" 
+                                    Grid.Column="1" 
+                                    Margin="53.778,99,54.222,32.111" 
+                                    Height="Auto" 
+                                    Background="#FFF9FF74" 
+                                    BorderBrush="{x:Null}"
+                                    Style="{DynamicResource ButtonStyle1}">
+
+                                <Image  Source="/Res/pngegg.png" 
+                                            Height="13" 
+                                            Width="15" 
+                                            RenderTransformOrigin="0.53,0.826"/>
+                            </Button>
+
+                            <Grid Grid.ColumnSpan="3"
+                        Grid.RowSpan="2"
+                        Grid.Row="1">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="3"
+                        Grid.Row="0"
+                        Background="#FFEDFFEE"
+                        CornerRadius="10">
+                                </Border>
+
+                                <TextBlock 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Имя: "        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
+
+                                <TextBlock 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Цена аренда: "        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
+
+                                <TextBlock 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Изошенность (в годах):"        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Name}"       
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="5 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding Price}"
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="40 0 0 0"/>
+
+                                <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Text="{Binding ProductLive}"        
+                        Foreground="#FF58626B" 
+                        FontFamily="Bahnschrift Light"
+                        VerticalAlignment="Center"
+                        Margin="0 0 0 0"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
         </ListView>
-        
+
+        <Button 
+            x:Name="btnEqipmentClient"
+            Grid.Row="3"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Width="40"
+            Height="40"
+            Content="+"
+            FontSize="30"
+            FontFamily="Century Gothic" 
+            Style="{DynamicResource ButtonStyle1}"
+            Background="Black"
+            Foreground="White"
+            BorderThickness="0"
+            Click="btnAddEquipment_Click" 
+            BorderBrush="{x:Null}"
+        />
     </Grid>
 </Window>

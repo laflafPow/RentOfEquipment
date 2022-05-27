@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5b3b821fc8124180aadb123394e29f8f" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Client" Width="1.5" PointX="3" PointY="7" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Employee" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Equipment" Width="1.5" PointX="3" PointY="11.25" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.EquipmentSale" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Gender" Width="1.5" PointX="0.75" PointY="8" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Passport" Width="1.5" PointX="5.25" PointY="7.75" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.Role" Width="1.5" PointX="0.75" PointY="2" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
-        <EntityTypeShape EntityType="RentOfEquipmentModel.TypeEquipment" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Client" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Employee" Width="1.5" PointX="6" PointY="8.5" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Equipment" Width="1.5" PointX="6" PointY="12.75" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.EquipmentSale" Width="1.5" PointX="8.25" PointY="2.625" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Gender" Width="1.5" PointX="0.75" PointY="3.5" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Passport" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.Role" Width="1.5" PointX="3.75" PointY="9.5" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="RentOfEquipmentModel.TypeEquipment" Width="1.5" PointX="3.75" PointY="13.625" />
         <AssociationConnector Association="RentOfEquipmentModel.FK_Client_Gender1" />
         <AssociationConnector Association="RentOfEquipmentModel.FK_EquipmentSale_Client1" />
         <AssociationConnector Association="RentOfEquipmentModel.FK_Passport_Client" />

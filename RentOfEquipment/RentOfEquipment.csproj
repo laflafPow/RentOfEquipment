@@ -81,6 +81,9 @@
     <Compile Include="Windows\ClientAddWindow.xaml.cs">
       <DependentUpon>ClientAddWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EquipmentAddWindow.xaml.cs">
+      <DependentUpon>EquipmentAddWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RentWindow.xaml.cs">
       <DependentUpon>RentWindow.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EmployeeListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EquipmentAddWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +257,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\eqipmentIcon.png" />
     <Resource Include="Res\pngegg.png" />
     <Resource Include="Res\employee.png" />
     <Resource Include="Res\user.png" />
