@@ -50,9 +50,9 @@ namespace RentOfEquipment
 
         private void btnRent_Click(object sender, RoutedEventArgs e)
         {
-            RentWindow rentWindow = new RentWindow();
+            RentWindowList rentWindowList = new RentWindowList();
             this.Hide();
-            rentWindow.ShowDialog();
+            rentWindowList.ShowDialog();
             this.Show();
         }
     }

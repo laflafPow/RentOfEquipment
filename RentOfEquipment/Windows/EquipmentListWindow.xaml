@@ -166,7 +166,7 @@
                             </Image>
 
                             <Button 
-                                    x:Name="btnChangeUser"
+                                    x:Name="btnChangeEquipment"
                                     Grid.ColumnSpan="2" 
                                     Grid.Column="1" 
                                     Margin="53.778,99,54.222,32.111" 
@@ -200,7 +200,7 @@
                         Grid.ColumnSpan="3"
                         Grid.RowSpan="3"
                         Grid.Row="0"
-                        Background="#FFEDFFEE"
+                        Background="#FFD1E0F6"
                         CornerRadius="10">
                                 </Border>
 
@@ -218,7 +218,7 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Text="Цена аренда: "        
+                        Text="Цена: "        
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
@@ -228,7 +228,7 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Text="Изошенность (в годах):"        
+                        Text="Изошенность: "        
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
@@ -236,13 +236,13 @@
 
                                 <TextBlock
                         Grid.Row="0"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
                         Text="{Binding Name}"       
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
-                        VerticalAlignment="Center"
-                        Margin="5 0 0 0"/>
+                        VerticalAlignment="Center"                    
+                        Margin="40 0 0 0"/>
 
                                 <TextBlock
                         Grid.Row="1"
@@ -252,7 +252,7 @@
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
-                        Margin="40 0 0 0"/>
+                        Margin="45 0 0 0"/>
 
                                 <TextBlock
                         Grid.Row="2"
@@ -262,7 +262,7 @@
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
-                        Margin="0 0 0 0"/>
+                        Margin="30 0 0 0"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -272,7 +272,7 @@
         </ListView>
 
         <Button 
-            x:Name="btnEqipmentClient"
+            x:Name="btnAddEquipment"
             Grid.Row="3"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"

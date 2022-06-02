@@ -24,11 +24,11 @@ namespace RentOfEquipment.EF
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int IdType { get; set; }
-        public string PhotoPath { get; set; }
         public bool Status { get; set; }
         public byte ProductLive { get; set; }
         public bool IsDeleted { get; set; }
         public byte[] Photo { get; set; }
+        public int QtyInWarehouse { get; set; }
     
         public virtual TypeEquipment TypeEquipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

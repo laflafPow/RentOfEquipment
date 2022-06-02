@@ -110,7 +110,7 @@ namespace RentOfEquipment.Windows
                         var equipment = lvEquipment.SelectedItem as EF.Equipment;
                         equipment.IsDeleted = true;
                         ClassHelper.AppData.Context.SaveChanges();
-                        MessageBox.Show("Пользователь успешно удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Оборудование успешно удалено", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                         Filter();
                     }
                 }
@@ -123,7 +123,7 @@ namespace RentOfEquipment.Windows
 
         private void lvEquipment_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (lvEquipment.SelectedItem is EF.Client)
+            if (lvEquipment.SelectedItem is EF.Equipment)
             {
                 var equipment = lvEquipment.SelectedItem as EF.Equipment;
 

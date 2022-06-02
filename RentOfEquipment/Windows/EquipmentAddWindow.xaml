@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="Добавление/Изменение клиента" Height="650" Width="800"
+        Title="Добавление/Изменение Оборудования" Height="650" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,8 +24,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
@@ -33,7 +31,7 @@
             Grid.ColumnSpan="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
-            Text="Добавление клиента"
+            Text="Добавление оборудования"
             FontFamily="Century Gothic"
             FontSize="20"
         />
@@ -43,7 +41,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="Фамилия:"
+            Text="Имя оборудования:"
             FontFamily="Century Gothic"
             FontSize="16"
         />
@@ -53,7 +51,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="Имя:"
+            Text="Цена:"
             FontFamily="Century Gothic"
             FontSize="16"
         />
@@ -63,7 +61,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="Отчество:"
+            Text="Тип оборудования:"
             FontFamily="Century Gothic"
             FontSize="16"
         />
@@ -73,7 +71,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="Телефон:"
+            Text="Статус аренды:"
             FontFamily="Century Gothic"
             FontSize="16"
         />
@@ -83,7 +81,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="E-Mail:"
+            Text="Изношенность (в годах):"
             FontFamily="Century Gothic"
             FontSize="16"
         />
@@ -93,22 +91,12 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
             Margin="10 0"
-            Text="Пол:"
+            Text="Кол-во на складе:"
             FontFamily="Century Gothic"
             FontSize="16"
         />
 
-        <TextBlock
-            Grid.Row="7"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="10 0"
-            Text="Дата рождения:"
-            FontFamily="Century Gothic"
-            FontSize="16"
-        />
-
-        <TextBox x:Name="txtLastName"
+        <TextBox x:Name="txtEquipmentName"
             Width="250"
             Grid.Row="1"
             Grid.Column="2"
@@ -121,7 +109,7 @@
         />
 
         <TextBox
-            x:Name="txtFirstName"
+            x:Name="txtPrice"
             Width="250"
             Grid.Row="2"
             Grid.Column="2"
@@ -133,8 +121,8 @@
             MaxLength="100"
         />
 
-        <TextBox
-            x:Name="txtMiddleName"
+        <ComboBox
+            x:Name="cmbEquipmentType"
             Width="250"
             Grid.Row="3"
             Grid.Column="2"
@@ -143,11 +131,10 @@
             Margin="10 0"
             FontFamily="Century Gothic"
             FontSize="16"
-            MaxLength="100"
         />
 
-        <TextBox
-            x:Name="txtPhone"
+        <ComboBox
+            x:Name="cmbRentStatus"
             Width="250"
             Grid.Row="4"
             Grid.Column="2"
@@ -155,12 +142,11 @@
             HorizontalAlignment="Left"
             Margin="10 0"
             FontFamily="Century Gothic"
-            FontSize="16"
-            MaxLength="12"
+            FontSize="16"          
         />
 
         <TextBox
-            x:Name="txtEmail"
+            x:Name="txtProductLive"
             Width="250"
             Grid.Row="5"
             Grid.Column="2"
@@ -172,8 +158,8 @@
             MaxLength="120"
         />
 
-        <ComboBox
-            x:Name="cbGender"
+        <TextBox
+            x:Name="txtQtyInWarehouse"
             Width="250"
             Grid.Row="6"
             Grid.Column="2"
@@ -182,22 +168,11 @@
             Margin="10 0"
             FontFamily="Century Gothic"
             FontSize="16"
-        />
-
-        <DatePicker
-            x:Name="dpBirthdate"
-            Width="250"
-            Grid.Row="7"
-            Grid.Column="2"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="10 0"
-            FontFamily="Century Gothic"
-            FontSize="16"
+            MaxLength="120"
         />
 
         <Border Background="LightGray"
-                Grid.Row="8"
+                Grid.Row="7"
                 Grid.ColumnSpan="2"
                 Grid.RowSpan="3"
                 Width="100"
@@ -213,7 +188,7 @@
         </Border>
 
         <Button x:Name="btnChoosePhoto"
-                Grid.Row="11" 
+                Grid.Row="9" 
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Width="150"
@@ -221,19 +196,19 @@
                 Content="Выбрать фото"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="10 0"
+                Margin="0 26 0 0"
                 FontSize="12"
-                VerticalContentAlignment="Center"
+                VerticalContentAlignment="Bottom"
                 BorderThickness="0"
                 Click="btnChoosePhoto_Click" Foreground="#FF59636C" Background="{x:Null}" BorderBrush="Black"/>
 
         <Button Grid.Row="13"
-                x:Name="btnClientAdd"
+                x:Name="btnEquipmentAdd"
                 Grid.ColumnSpan="2"
                 Width="150"
                 Height="30"
                 Content="Добавить"
-                Click="btnClientAdd_Click"/>
+                Click="btnEquipmentAdd_Click"/>
 
     </Grid>
 </Window>

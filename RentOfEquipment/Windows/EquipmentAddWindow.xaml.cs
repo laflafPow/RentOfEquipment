@@ -1,6 +1,8 @@
-﻿using RentOfEquipment.ClassHelper;
+﻿using Microsoft.Win32;
+using RentOfEquipment.ClassHelper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -28,47 +30,48 @@ namespace RentOfEquipment.Windows
         public EquipmentAddWindow()
         {
             InitializeComponent();
-            cbGender.ItemsSource = AppData.Context.Gender.ToList();
-            cbGender.DisplayMemberPath = "Name";
-            cbGender.SelectedIndex = 0;
+            cmbEquipmentType.ItemsSource = AppData.Context.TypeEquipment.ToList();
+            cmbEquipmentType.DisplayMemberPath = "Name";
+            cmbEquipmentType.SelectedIndex = 0;
+
+            cmbRentStatus.ItemsSource = new List<String>
+            {
+                "Сдается",
+                "Не активен"
+            };
+            cmbRentStatus.SelectedIndex = 0;
 
             isEdit = false;
-        }
-
-        public static bool IsValidEmail(string email)
-        {
-            try
-            {
-                MailAddress m = new MailAddress(email);
-
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
         }
 
         public EquipmentAddWindow(EF.Equipment equipment)
         {
             InitializeComponent();
-            cbGender.ItemsSource = ClassHelper.AppData.Context.Gender.ToList();
-            cbGender.DisplayMemberPath = "Name";
+            cmbEquipmentType.ItemsSource = AppData.Context.TypeEquipment.ToList();
+            cmbEquipmentType.DisplayMemberPath = "Name";
 
-            txtLastName.Text = equipment.Name;
-            txtFirstName.Text = equipment.FirstName;
-            txtMiddleName.Text = equipment.MiddleName;
-            txtPhone.Text = equipment.Phone;
-            txtEmail.Text = equipment.Email;
-            dpBirthdate.SelectedDate = equipment.Birthdate;
-
-            // ?*@?*.?*
-
-            cbGender.SelectedIndex = client.IdGender - 1;
-
-            if (client.Photo != null)
+            cmbRentStatus.ItemsSource = new List<String>
             {
-                using (MemoryStream stream = new MemoryStream(client.Photo))
+                "Сдается",
+                "Не активен"
+            };
+
+            txtEquipmentName.Text = equipment.Name;
+            txtPrice.Text = ((int)(equipment.Price)).ToString();
+            txtProductLive.Text = equipment.ProductLive.ToString();
+            txtQtyInWarehouse.Text = equipment.QtyInWarehouse.ToString();
+
+            if (equipment.Status)
+            {
+                cmbRentStatus.SelectedIndex = 0;
+            }
+            else cmbRentStatus.SelectedIndex = 1;
+
+            cmbEquipmentType.SelectedIndex = equipment.IdType - 1;
+
+            if (equipment.Photo != null)
+            {
+                using (MemoryStream stream = new MemoryStream(equipment.Photo))
                 {
                     BitmapImage bitmapImage = new BitmapImage();
                     bitmapImage.BeginInit();
@@ -81,60 +84,62 @@ namespace RentOfEquipment.Windows
                 }
             }
 
-            tbTitle.Text = "Изменение данных клиента";
-            btnClientAdd.Content = "Сохранить";
+            tbTitle.Text = "Изменение данных оборудования";
+            btnEquipmentAdd.Content = "Сохранить";
 
             isEdit = true;
 
-            editClient = client;
+            editEquipment = equipment;
         }
 
-
-        private void btnClientAdd_Click(object sender, RoutedEventArgs e)
+        private void btnEquipmentAdd_Click(object sender, RoutedEventArgs e)
         {
 
-            if (String.IsNullOrWhiteSpace(txtLastName.Text))
+            if (String.IsNullOrWhiteSpace(txtEquipmentName.Text))
             {
-                MessageBox.Show("Пустые значения в поле Фамилия", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пустые значения в поле Имя оборудования", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (String.IsNullOrWhiteSpace(txtFirstName.Text))
+            if (String.IsNullOrWhiteSpace(txtPrice.Text))
             {
-                MessageBox.Show("Пустые значения в поле Имя", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пустые значения в поле Цена", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (String.IsNullOrWhiteSpace(txtPhone.Text))
+            if (!Double.TryParse(txtPrice.Text, out double res))
             {
-                MessageBox.Show("Пустые значения в поле Телефон", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("В поле Цена возможны только цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (!Int64.TryParse(txtPhone.Text, out long res))
+            if (String.IsNullOrWhiteSpace(txtProductLive.Text))
             {
-                MessageBox.Show("В поле телефон возможны только цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пустые значения в поле Изношенность (в годах)", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (txtEmail.Text != "")
+            if (!Byte.TryParse(txtProductLive.Text, out byte result))
             {
-                if (IsValidEmail(txtEmail.Text) == false)
-                {
-                    MessageBox.Show("E-mail не соответсвует маске (?*@?*.?*)", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                MessageBox.Show("В поле Изношенность (в годах) возможны только цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
 
-            if (dpBirthdate.SelectedDate.HasValue == false)
+            if (String.IsNullOrWhiteSpace(txtQtyInWarehouse.Text))
             {
-                MessageBox.Show("Ошибка в поле даты", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Пустые значения в поле Количество на складе", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!Int32.TryParse(txtQtyInWarehouse.Text, out int resulto))
+            {
+                MessageBox.Show("В поле Количество на складе возможны только цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (isEdit)
             {
-                var resClick = MessageBox.Show("Изменить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var resClick = MessageBox.Show("Изменить оборудование?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (resClick == MessageBoxResult.No)
                 {
@@ -143,25 +148,26 @@ namespace RentOfEquipment.Windows
 
                 try
                 {
-                    editClient.LastName = txtLastName.Text;
-                    editClient.FirstName = txtFirstName.Text;
-                    editClient.MiddleName = txtMiddleName.Text;
-                    editClient.Phone = txtPhone.Text;
-                    editClient.Email = txtEmail.Text;
-                    editClient.Birthdate = dpBirthdate.SelectedDate.Value;
+                    editEquipment.Name = txtEquipmentName.Text;
+                    editEquipment.Price = Convert.ToInt32(txtPrice.Text);
+                    editEquipment.ProductLive = Convert.ToByte(txtProductLive.Text);
+                    editEquipment.QtyInWarehouse = Convert.ToInt32(txtQtyInWarehouse.Text);
 
-                    // ?*@?*.?*
-
-                    editClient.IdGender = (cbGender.SelectedItem as EF.Gender).Id;
+                    editEquipment.IdType = (cmbEquipmentType.SelectedItem as EF.TypeEquipment).Id;
+                    if (cmbRentStatus.SelectedIndex == 0)
+                    {
+                        editEquipment.Status = true;
+                    }
+                    else editEquipment.Status = false;
 
                     if (pathPhoto != null)
                     {
-                        editClient.Photo = File.ReadAllBytes(pathPhoto);
+                        editEquipment.Photo = File.ReadAllBytes(pathPhoto);
                     }
 
                     ClassHelper.AppData.Context.SaveChanges();
 
-                    MessageBox.Show("Пользователь изменен");
+                    MessageBox.Show("Оборудование изменено");
                     this.Close();
                 }
 
@@ -173,7 +179,7 @@ namespace RentOfEquipment.Windows
 
             else
             {
-                var resClick = MessageBox.Show("Добавить пользователя?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var resClick = MessageBox.Show("Добавить оборудование?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (resClick == MessageBoxResult.No)
                 {
@@ -182,25 +188,29 @@ namespace RentOfEquipment.Windows
 
                 try
                 {
-                    EF.Client newClient = new EF.Client();
+                    EF.Equipment newEquipment = new EF.Equipment();
 
-                    newClient.LastName = txtLastName.Text;
-                    newClient.FirstName = txtFirstName.Text;
-                    newClient.MiddleName = txtMiddleName.Text;
-                    newClient.Phone = txtPhone.Text;
-                    newClient.Email = txtEmail.Text;
-                    newClient.IdGender = (cbGender.SelectedItem as EF.Gender).Id;
-                    newClient.Birthdate = dpBirthdate.SelectedDate.Value;
+                    newEquipment.Name = txtEquipmentName.Text;
+                    newEquipment.Price = Convert.ToInt32(txtPrice.Text);
+                    newEquipment.ProductLive = Convert.ToByte(txtProductLive.Text);
+                    newEquipment.QtyInWarehouse = Convert.ToInt32(txtQtyInWarehouse.Text);
+
+                    newEquipment.IdType = (cmbEquipmentType.SelectedItem as EF.TypeEquipment).Id;
+                    if (cmbRentStatus.SelectedIndex == 0)
+                    {
+                        newEquipment.Status = true;
+                    }
+                    else newEquipment.Status = false;
 
                     if (pathPhoto != null)
                     {
-                        newClient.Photo = File.ReadAllBytes(pathPhoto);
+                        newEquipment.Photo = File.ReadAllBytes(pathPhoto);
                     }
 
-                    ClassHelper.AppData.Context.Client.Add(newClient);
+                    ClassHelper.AppData.Context.Equipment.Add(newEquipment);
                     ClassHelper.AppData.Context.SaveChanges();
 
-                    MessageBox.Show("Пользователь добавлен");
+                    MessageBox.Show("Оборудование добавлено");
 
                     this.Close();
                 }
