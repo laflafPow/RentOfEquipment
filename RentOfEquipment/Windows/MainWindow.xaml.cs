@@ -18,15 +18,24 @@ namespace RentOfEquipment
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private EF.Employee goemployee;
+
+        public MainWindow(EF.Employee employee)
         {
             InitializeComponent();
+
+            goemployee = employee;
+            if (employee.IdRole == 2)
+            {
+                btnReport.Visibility = Visibility.Hidden;
+                btnReport.IsEnabled = false;
+            }
         }
 
 
         private void btnEmployeeList_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeListWindow employeeListWindow = new EmployeeListWindow();
+            EmployeeListWindow employeeListWindow = new EmployeeListWindow(goemployee);
             this.Hide();
             employeeListWindow.ShowDialog();
             this.Show();
@@ -53,6 +62,14 @@ namespace RentOfEquipment
             RentWindowList rentWindowList = new RentWindowList();
             this.Hide();
             rentWindowList.ShowDialog();
+            this.Show();
+        }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWindow reportWindow = new ReportWindow(goemployee);
+            this.Hide();
+            reportWindow.ShowDialog();
             this.Show();
         }
     }

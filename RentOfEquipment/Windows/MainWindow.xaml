@@ -64,6 +64,19 @@
                 />
             </WrapPanel>
 
+            <Button 
+                x:Name="btnReport"
+                Content="Отчетность"
+                FontSize="14" 
+                FontFamily="Century Gothic" 
+                Background="Black"
+                BorderBrush="{x:Null}"
+                Height="40"
+                Margin="330,30,335,0" 
+                Click="btnReport_Click"
+                Visibility="Visible"
+                IsEnabled="True"
+            />
         </StackPanel>
 
     </Grid>

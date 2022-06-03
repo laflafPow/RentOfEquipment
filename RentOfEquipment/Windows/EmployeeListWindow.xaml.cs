@@ -28,12 +28,17 @@ namespace RentOfEquipment.Windows
             "По должности",
         };
 
-        public EmployeeListWindow()
+        public EmployeeListWindow(EF.Employee employee)
         {
             InitializeComponent();
             Filter();
             cbSort.ItemsSource = listSort;
             cbSort.SelectedIndex = 0;
+            if (employee.IdRole == 2)
+            {
+                btnAddEmployee.Visibility = Visibility.Hidden;
+                btnAddEmployee.IsEnabled = false;
+            }
         }
 
         private void Filter()

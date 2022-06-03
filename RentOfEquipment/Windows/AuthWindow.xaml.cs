@@ -32,7 +32,7 @@ namespace RentOfEquipment.Windows
 
             if (authUser != null)
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(authUser);
                 mainWindow.Show();
                 this.Close();
             }
