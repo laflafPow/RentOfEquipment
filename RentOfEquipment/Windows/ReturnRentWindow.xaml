@@ -1,11 +1,11 @@
-﻿<Window x:Class="RentOfEquipment.Windows.RentWindow"
+﻿<Window x:Class="RentOfEquipment.Windows.ReturnRentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentOfEquipment.Windows"
         mc:Ignorable="d"
-        Title="Аренда" Height="750" Width="800"
+        Title="Сдача аренды" Height="750" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -28,7 +28,7 @@
             VerticalAlignment="Center"
             Grid.Row="0"
             Width="400">
-            
+
             <TextBlock   
                 Text="Арендатор:"
                 FontFamily="Century Gothic"
@@ -45,20 +45,7 @@
             />
         </WrapPanel>
 
-        <Button
-            x:Name="btnSelectUser"
-            Grid.Row="0"
-            Grid.Column="1"
-            FontFamily="Century Gothic"
-            FontSize="16"
-            FontWeight="Bold"
-            Content="Выбрать арендатора"
-            Height="50"
-            Width="250"
-            VerticalContentAlignment="Center" BorderBrush="{x:Null}" Background="Black" Click="btnSelectUser_Click" Cursor="Hand"
-        />
 
-        
         <WrapPanel 
             Margin="20"
             VerticalAlignment="Center"
@@ -80,18 +67,6 @@
                 Margin="10 0 0 0"
             />
         </WrapPanel>
-
-        <Button
-            x:Name="btnSelectEmployee"
-            Grid.Row="1"
-            Grid.Column="1"
-            FontFamily="Century Gothic"
-            FontSize="16"
-            FontWeight="Bold"
-            Content="Выбрать сотрудника"
-            Height="50"
-            Width="250" Background="Black" Click="btnSelectEmployee_Click" Cursor="Hand" BorderBrush="{x:Null}"
-        />
 
 
         <WrapPanel 
@@ -115,72 +90,32 @@
             />
         </WrapPanel>
 
-        <Button
-            x:Name="btnSelectEquipment"
-            Grid.Row="2"
-            Grid.Column="1"
-            FontFamily="Century Gothic"
-            FontSize="16"
-            FontWeight="Bold"
-            Content="Выбрать оборудование"
-            Height="50"
-            Width="250" Background="Black" Click="btnSelectEquipment_Click" BorderBrush="{x:Null}" Cursor="Hand"
-        />
-
         <WrapPanel 
             Margin="20"
             VerticalAlignment="Center"
-            Grid.Row="3">
+            Grid.Row="5">
 
             <TextBlock   
-                Text="Кол-во на складе:"
+                Text="Дата сдачи аренды:"
                 FontFamily="Century Gothic"
                 FontSize="16"
                 FontWeight="Bold"
             />
 
             <TextBlock  
-                x:Name="tbQty"
+                x:Name="tbEndDate"
                 Text=""
                 FontFamily="Century Gothic"
                 FontSize="16"
                 Margin="10 0 0 0"
             />
         </WrapPanel>
+    
 
         <WrapPanel 
             Margin="20"
             VerticalAlignment="Center"
-            HorizontalAlignment="Center"
             Grid.Row="3"
-            Grid.Column="1">
-
-            <TextBlock   
-                Text="Количество:"
-                FontFamily="Century Gothic"
-                FontSize="16"
-                FontWeight="Bold"
-                VerticalAlignment="Center"
-            />
-
-            <TextBox
-                x:Name="txtQty"
-                FontFamily="Century Gothic"
-                FontSize="16"
-                Margin="10 0 0 0"
-                Height="30"
-                Width="180"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                PreviewTextInput="txtQty_PreviewTextInput" TextChanged="txtQty_TextChanged"
-                PreviewKeyDown="txtQty_PreviewKeyDown"
-            />
-        </WrapPanel>
-
-        <WrapPanel 
-            Margin="20"
-            VerticalAlignment="Center"
-            Grid.Row="4"
             Grid.Column="0">
 
             <TextBlock   
@@ -199,23 +134,10 @@
             />
         </WrapPanel>
 
-        <DatePicker
-            x:Name="dpStartRent"
-            Grid.Column="1"
-            Grid.Row="4"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            FontFamily="Century Gothic"
-            FontSize="16"
-            VerticalContentAlignment="Center"
-            Width="250"
-            Height="50"
-            SelectedDateChanged="dpStartRent_SelectedDateChanged"/>
-
         <WrapPanel 
             Margin="20"
             VerticalAlignment="Center"
-            Grid.Row="5"
+            Grid.Row="4"
             Grid.Column="0">
 
             <TextBlock   
@@ -235,7 +157,7 @@
         </WrapPanel>
 
         <DatePicker
-            x:Name="dpEndRent"
+            x:Name="dpFactRent"
             Grid.Column="1"
             Grid.Row="5"
             VerticalAlignment="Center"
@@ -245,7 +167,7 @@
             VerticalContentAlignment="Center"
             Width="250"
             Height="50"
-            SelectedDateChanged="dpEndRent_SelectedDateChanged"/>
+            SelectedDateChanged="dpFactRent_SelectedDateChanged"/>
 
         <WrapPanel
             VerticalAlignment="Center"
@@ -271,7 +193,7 @@
             x:Name="btnAdd"
             Grid.Row="7"
             Grid.ColumnSpan="2"
-            Content="Добавить"
+            Content="Сдать"
             FontFamily="Century Gothic"
             FontSize="16"
             FontWeight="Bold"

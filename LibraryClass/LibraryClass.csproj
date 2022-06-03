@@ -41,11 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassHelper\Equipment.cs" />
-    <Compile Include="RentMethodsClass.cs" />
-    <Compile Include="EquipmentMethodsClass.cs" />
+    <Compile Include="CalculationClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserMethodsClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

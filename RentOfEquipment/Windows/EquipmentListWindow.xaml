@@ -228,7 +228,7 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Text="Изошенность: "        
+                        Text="Изношенность: "        
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
@@ -242,7 +242,7 @@
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"                    
-                        Margin="40 0 0 0"/>
+                        Margin="45 0 0 0"/>
 
                                 <TextBlock
                         Grid.Row="1"
@@ -252,7 +252,7 @@
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
-                        Margin="45 0 0 0"/>
+                        Margin="50 0 0 0"/>
 
                                 <TextBlock
                         Grid.Row="2"
@@ -262,7 +262,7 @@
                         Foreground="#FF58626B" 
                         FontFamily="Bahnschrift Light"
                         VerticalAlignment="Center"
-                        Margin="30 0 0 0"/>
+                        Margin="40 0 0 0"/>
                             </Grid>
                         </Grid>
                     </Border>

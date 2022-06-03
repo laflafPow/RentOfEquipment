@@ -127,8 +127,8 @@ namespace RentOfEquipment.Windows
             {
                 var rent = lvRent.SelectedItem as EF.EquipmentSale;
 
-                //RentWindow rentWindow = new RentWindow(rent);
-                //rentWindow.ShowDialog();
+                ReturnRentWindow returnRentWindow = new ReturnRentWindow(rent);
+                returnRentWindow.ShowDialog();
                 Filter();
 
             }

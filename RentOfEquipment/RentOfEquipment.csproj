@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassHelper\Client.cs" />
+    <Compile Include="ClassHelper\DataTransmissionClass.cs" />
     <Compile Include="Test\PatternUser.xaml.cs">
       <DependentUpon>PatternUser.xaml</DependentUpon>
     </Compile>
@@ -89,6 +90,18 @@
     </Compile>
     <Compile Include="Windows\RentWindowList.xaml.cs">
       <DependentUpon>RentWindowList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReturnRentWindow.xaml.cs">
+      <DependentUpon>ReturnRentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectClientWindow.xaml.cs">
+      <DependentUpon>SelectClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectEmployeeWindow.xaml.cs">
+      <DependentUpon>SelectEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectEquipmentWindow.xaml.cs">
+      <DependentUpon>SelectEquipmentWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Test\PatternUser.xaml">
       <SubType>Designer</SubType>
@@ -207,6 +220,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\ReturnRentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SelectEquipmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -257,6 +286,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\rentDefault.png" />
     <Resource Include="Res\eqipmentIcon.png" />
     <Resource Include="Res\pngegg.png" />
     <Resource Include="Res\employee.png" />
